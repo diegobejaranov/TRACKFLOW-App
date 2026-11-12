@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from cloudinary_storage.storage import MediaCloudinaryStorage
 
 
 # 1. Usuario con roles diferenciados (Músico, Productor, Cliente)
@@ -108,7 +109,9 @@ class AudioVersion(models.Model):
         verbose_name='Número de Versión'
     )  
     audio_file = models.FileField(
-        upload_to='audio_versions/', verbose_name='Archivo MP3'
+        upload_to='audio_versions/', 
+        storage=MediaCloudinaryStorage(),
+        verbose_name='Archivo MP3'
     )
     uploaded_by = models.ForeignKey(
         User, on_delete=models.CASCADE, verbose_name='Subido por'
