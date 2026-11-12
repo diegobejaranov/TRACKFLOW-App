@@ -17,8 +17,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['.onrender.com',]
 
+SESSION_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SECURE = True
 
-# Application definition
+CSRF_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
