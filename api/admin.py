@@ -16,8 +16,15 @@ class CustomUserAdmin(UserAdmin):
         ('Información de Rol TrackFlow', {'fields': ('role',)}),
     )
 
-admin.site.register(Project)
-admin.site.register(Song)
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'creator', 'created_at')
+
+@admin.register(Song)
+class SongAdmin(admin.ModelAdmin):
+    list_display = ('title', 'project', 'status')
+    list_filter = ('status',)
+
 admin.site.register(AudioVersion)
 
 @admin.register(TimestampComment)
