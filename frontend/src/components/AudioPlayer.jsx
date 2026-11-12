@@ -18,7 +18,8 @@ export default function AudioPlayer({ audioUrl, versionId, comments: initialComm
   useEffect(() => {
     if (!containerRef.current || !audioUrl) return;
 
-    const fullUrl = audioUrl.startsWith('http') ? audioUrl : `http://127.0.0.1:8000${audioUrl}`;
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+    const fullUrl = audioUrl.startsWith('http') ? audioUrl : `${API_URL}${audioUrl}`;
 
     const ws = WaveSurfer.create({
       container: containerRef.current,
