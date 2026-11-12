@@ -1,6 +1,9 @@
 import os
 import dj_database_url # type: ignore
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.utils
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -143,9 +146,15 @@ CSRF_TRUSTED_ORIGINS = [
 
 CORS_ALLOW_CREDENTIALS = True
 
-# Para archivos subidos por usuarios
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# Definir el modelo de usuario personalizado
 AUTH_USER_MODEL = 'api.User'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'cerconez'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '767731276318874'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', 'Ro3KOTv6I2AgRqfPSNdzCO0R1Sg'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
