@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-na0alnco9i4rja-l$p-vn87+(r)thj84z+e-%y&xo7j_n$newq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.onrender.com']
+ALLOWED_HOSTS = ['.onrender.com',]
 
 
 # Application definition
@@ -44,10 +44,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -132,7 +132,14 @@ MAILERS = {
 
 import os
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://trackflow-app-frontend.onrender.com",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://trackflow-app-frontend.onrender.com",
+]
+
 CORS_ALLOW_CREDENTIALS = True
 
 # Para archivos subidos por usuarios

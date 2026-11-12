@@ -71,15 +71,17 @@ export default function AudioPlayer({ audioUrl, versionId, comments: initialComm
 
     const timeToAttach = selectedTimestamp !== null ? selectedTimestamp : currentTime;
 
-    fetch(`http://127.0.0.1:8000/api/audio-versions/${versionId}/comment/`, {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+    fetch(`${API_URL}/api/audio-versions/${versionId}/comment/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({
         timestamp_seconds: timeToAttach,
         text: newCommentText,
-        author_id: currentUser.id,             // <--- Se envía el ID del usuario actual
-        author_username: currentUser.username, // <--- Se envía el Username del usuario actual
+        author_id: currentUser.id,             
+        author_username: currentUser.username, 
       }),
     })
       .then((res) => res.json())

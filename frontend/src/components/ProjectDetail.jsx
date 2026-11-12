@@ -23,7 +23,9 @@ export default function ProjectDetail({ projectId, onBack }) {
   }, [projectId]);
 
   const loadProjectDetail = () => {
-    fetch(`http://127.0.0.1:8000/api/projects/${projectId}/`, {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+    fetch(`${API_URL}/api/projects/${projectId}/`, {
       credentials: 'include',
     })
       .then((res) => res.json())
@@ -40,7 +42,9 @@ export default function ProjectDetail({ projectId, onBack }) {
   };
 
   const handleStatusChange = (songId, newStatus) => {
-    fetch(`http://127.0.0.1:8000/api/songs/${songId}/status/`, {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+    fetch(`${API_URL}/api/songs/${songId}/status/`, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
@@ -72,7 +76,9 @@ export default function ProjectDetail({ projectId, onBack }) {
     if (savedUser.id) formData.append('author_id', savedUser.id);
     if (savedUser.username) formData.append('author_username', savedUser.username);
 
-    fetch(`http://127.0.0.1:8000/api/projects/${projectId}/upload-song/`, {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+      fetch(`${API_URL}/api/projects/${projectId}/upload-song/`, {
       method: 'POST',
       credentials: 'include',
       body: formData,
@@ -95,7 +101,9 @@ export default function ProjectDetail({ projectId, onBack }) {
 
   const handleDeleteSong = (songId, title) => {
     if (window.confirm(`¿Deseas eliminar la canción "${title}"?`)) {
-      fetch(`http://127.0.0.1:8000/api/songs/${songId}/delete/`, {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+      fetch(`${API_URL}/api/songs/${songId}/delete/`, {
         method: 'DELETE',
         credentials: 'include',
       })

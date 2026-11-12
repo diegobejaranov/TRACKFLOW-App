@@ -17,7 +17,9 @@ export default function ProjectList({ onSelectProject }) {
   }, []);
 
   const fetchProjects = () => {
-    fetch('http://127.0.0.1:8000/api/projects/', {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+    fetch(`${API_URL}/api/projects/`, {
       credentials: 'include',
     })
       .then((res) => res.json())
@@ -33,7 +35,9 @@ export default function ProjectList({ onSelectProject }) {
     if (!newTitle.trim()) return;
 
     setIsSubmitting(true);
-    fetch('http://127.0.0.1:8000/api/projects/create/', {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+    fetch(`${API_URL}/api/projects/create/`, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
@@ -56,7 +60,9 @@ export default function ProjectList({ onSelectProject }) {
   const handleDeleteProject = (e, projectId, title) => {
     e.stopPropagation();
     if (window.confirm(`¿Estás seguro de que deseas eliminar el proyecto "${title}"?`)) {
-      fetch(`http://127.0.0.1:8000/api/projects/${projectId}/delete/`, { 
+      const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+      fetch(`${API_URL}/api/projects/${projectId}/delete/`, { 
         method: 'DELETE',
         credentials: 'include',
       })

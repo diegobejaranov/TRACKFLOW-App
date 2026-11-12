@@ -12,7 +12,9 @@ export default function Login({ onLoginSuccess }) {
     setError(null);
     setLoading(true);
 
-    fetch('http://127.0.0.1:8000/api/login/', {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+
+    fetch(`${API_URL}/api/login/`, {
       method: 'POST',
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
