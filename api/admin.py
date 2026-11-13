@@ -27,7 +27,7 @@ class SongAdmin(admin.ModelAdmin):
 
 @admin.register(AudioVersion)
 class AudioVersionAdmin(admin.ModelAdmin):
-    list_display = ('song', 'version_number', 'uploaded_by' 'created_at')
+    list_display = ('song', 'version_number', 'uploaded_by' , 'created_at')
     list_filter = ('uploaded_by',)
 
 @admin.register(TimestampComment)
