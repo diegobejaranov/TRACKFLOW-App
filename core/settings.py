@@ -153,7 +153,7 @@ CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'cerconez'),
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '767731276318874'),
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', 'Ro3KOTv6I2AgRqfPSNdzCO0R1Sg'),
-    'RESOURCE_TYPE': 'raw',
+    'RESOURCE_TYPE': 'auto',
 }
 
 STORAGES = {
