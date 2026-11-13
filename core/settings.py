@@ -1,9 +1,7 @@
 import os
 import dj_database_url # type: ignore
 from pathlib import Path
-import cloudinary
-import cloudinary.uploader
-import cloudinary.utils
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,7 +16,7 @@ SECRET_KEY = 'django-insecure-na0alnco9i4rja-l$p-vn87+(r)thj84z+e-%y&xo7j_n$newq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.onrender.com',]
+ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
 
 SESSION_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = True
@@ -155,6 +153,7 @@ CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME', 'cerconez'),
     'API_KEY': os.environ.get('CLOUDINARY_API_KEY', '767731276318874'),
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET', 'Ro3KOTv6I2AgRqfPSNdzCO0R1Sg'),
+    'RESOURCE_TYPE': 'auto',
 }
 
 STORAGES = {
