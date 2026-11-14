@@ -93,7 +93,7 @@ def create_project(request):
 def project_detail(request, project_id):
     try:
         project = Project.objects.get(pk=project_id)
-        songs = project.songs.all()
+        songs = project.songs.all().order_by('id')
 
         songs_data = []
         for song in songs:
