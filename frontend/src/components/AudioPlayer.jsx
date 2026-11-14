@@ -210,7 +210,10 @@ export default function AudioPlayer({ audioUrl, versionId, comments: initialComm
           </div>
         ) : (
           <div className="space-y-2.5 max-h-80 overflow-y-auto pr-1">
-            {comments.map((comment) => (
+            {comments
+              .slice() 
+              .sort((a, b) => a.id - b.id) 
+              .map((comment) => (
               <div
                 key={comment.id}
                 className="group flex items-start justify-between bg-slate-950/70 hover:bg-slate-900 border border-slate-800/80 hover:border-indigo-500/30 p-3.5 rounded-xl transition-all duration-200 shadow-sm"
