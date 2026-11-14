@@ -32,9 +32,10 @@ export default function ProjectDetail({ projectId, onBack }) {
       .then((data) => {
         setProject(data);
         setLoading(false);
-        if (data.songs?.length > 0 && data.songs[0].versions?.length > 0) {
+       if (!activeVersion && data.songs?.length > 0 && data.songs[0].versions?.length > 0) {
           setActiveVersion(data.songs[0].versions[0]);
         }
+
         if (role !== 'producer' && data.songs?.length > 0) {
           setSelectedSongId(data.songs[0].id);
         }
