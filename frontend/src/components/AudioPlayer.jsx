@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 import { Play, Pause, MessageSquare, Send, CheckCircle2, Clock, Sparkles, Volume2 } from 'lucide-react';
 
-export default function AudioPlayer({ audioUrl, versionId, comments: initialComments }) {
+export default function AudioPlayer({ audioUrl, versionId, comments: initialComments, onCommentAdded }) {
   const containerRef = useRef(null);
   const wavesurferRef = useRef(null);
 
