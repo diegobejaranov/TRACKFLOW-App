@@ -56,7 +56,7 @@ def project_list(request):
             'client': p.client.username if p.client else None,
             'is_approved': is_approved,
             'songs_count': all_songs.count(),
-            'created_at': p.created_at.strftime('%Y-%m-%d %H:%M'),
+            'created_at': format_colombia_time(p.created_at, '%Y-%m-%d %H:%M'),
         })
     return JsonResponse({'projects': data}, safe=False)
 
@@ -106,7 +106,7 @@ def project_detail(request, project_id):
                     'timestamp_seconds': c.timestamp,
                     'text': c.text,
                     'author': c.author.username,
-                    'created_at': c.created_at.strftime('%H:%M:%S')
+                    'created_at': format_colombia_time(c.created_at, '%H:%M:%S')
                 } for c in comments]
 
                 versions_data.append({
@@ -114,7 +114,7 @@ def project_detail(request, project_id):
                     'version_number': ver.version_number,
                     'audio_file': ver.audio_file.url if ver.audio_file else '',
                     'uploaded_by': ver.uploaded_by.username,
-                    'created_at': ver.created_at.strftime('%Y-%m-%d %H:%M'),
+                    'created_at': format_colombia_time(ver.created_at, '%Y-%m-%d %H:%M'),
                     'comments': comments_data
                 })
 
