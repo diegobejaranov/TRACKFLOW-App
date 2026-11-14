@@ -231,7 +231,12 @@ export default function ProjectDetail({ projectId, onBack }) {
             </div>
 
             {activeVersion && song.versions.some((v) => v.id === activeVersion.id) && (
-              <AudioPlayer key={activeVersion.id} audioUrl={activeVersion.audio_file} versionId={activeVersion.id} comments={activeVersion.comments} />
+              <AudioPlayer 
+                key={activeVersion.id} 
+                audioUrl={activeVersion.audio_file} 
+                versionId={activeVersion.id} 
+                comments={activeVersion.comments}
+                onCommentAdded={loadProjectDetail} />
             )}
           </div>
         ))}

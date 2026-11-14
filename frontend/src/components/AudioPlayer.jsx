@@ -100,6 +100,11 @@ export default function AudioPlayer({ audioUrl, versionId, comments: initialComm
             },
           ]);
           setNewCommentText('');
+
+          if (onCommentAdded) {
+            onCommentAdded();
+          }
+          
         } else {
           alert(data.error || 'Error al publicar el comentario.');
         }
