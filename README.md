@@ -41,7 +41,7 @@
 
 ## 📂 Project Structure
 
-
+```text
 trackflow/
 ├── backend/
 │   ├── core/
@@ -71,7 +71,7 @@ trackflow/
 │   └── vite.config.js
 ├── .gitignore
 └── README.md
-
+```
 ---
 
 🚀 Local Setup & Installation
